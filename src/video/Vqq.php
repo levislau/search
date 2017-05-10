@@ -5,8 +5,6 @@
  * Date: 2017/5/10 0010
  * Time: 下午 6:47
  */
-namespace Search\Video;
-
 require_once 'VideoFace.php';
 use QL\QueryList;
 
