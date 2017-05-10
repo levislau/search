@@ -1,15 +1,12 @@
 {
     "name": "xuliangliang22/search",
     "description": "composer gather iqiyi youku vqq video urls",
-    "version": "1.0",
-    "type": "library",
     "require": {
         "php": "7.0.*",
         "jaeger/querylist": "^3.2",
         "jaeger/querylist-ext-multi": "^1.0"
     },
     "license": "MIT",
-    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
             "Search\\VideoSearch\\": "src/"
