@@ -7,10 +7,10 @@
         "jaeger/querylist-ext-multi": "^1.0"
     },
     "license": "MIT",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Search\\VideoSearch\\": "src/video/"
-        }
+        },
+        "classmap":["src/video/VideoSearch.php"]
     }
 }

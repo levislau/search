@@ -3,7 +3,6 @@
  * Date: 2017/5/9 0009
  * Time: 下午 9:18
  */
-namespace Search\VideoSearch;
 
 use QL\QueryList;
 
