@@ -1,6 +1,6 @@
 {
     "name": "xuliangliang22/search",
-    "description": "composer gather iqiyi youku vqq video urlsxxx",
+    "description": "composer gather iqiyi youku vqq video urls",
     "require": {
         "php": ">=5.6.4",
         "jaeger/querylist": "^3.2",
