@@ -6,7 +6,7 @@ include 'vendor/autoload.php';
 
 use Search\Video\VideoFactory;
 
-//$video_type ['iqiyi','youku','vqq']
+//$video_type ['iqiyi','youku','vqq'],只选择其中一个作为参数即可
 
 $vfactory = new VideoFactory($video_type);
 
