@@ -1,6 +1,7 @@
 {
     "name": "xuliangliang22/search",
     "description": "composer gather iqiyi youku vqq video urls",
+    "version": "1.0",
     "type": "library",
     "require": {
         "php": "7.0.*",
