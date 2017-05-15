@@ -4,7 +4,7 @@
  * Date: 2017/5/11 0011
  * Time: 下午 4:12
  */
-namespace Search\Factory;
+namespace Search;
 
 require_once 'video/Iqiyi.php';
 require_once 'video/Youku.php';
@@ -14,7 +14,7 @@ require_once 'pic/Picdown.php';
 require_once 'pic/Baidupic.php';
 require_once 'pic/Sansixpic.php';
 
-class VideoFactory
+class Factory
 {
 
     public $factoryObj;
