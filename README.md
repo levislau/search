@@ -10,7 +10,7 @@ use Search\Factory;
 
 $vfactory = new Factory($video_type);
 
-$videoObj = $vfactory->videoObj;
+$videoObj = $vfactory->factoryObj;
 
 //获得列表页的数组['title'=>'标题','litpic'=>'缩略图','con_url'=>'内容链接地址']
 
