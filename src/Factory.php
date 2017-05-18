@@ -4,7 +4,7 @@
  * Date: 2017/5/11 0011
  * Time: 下午 4:12
  */
-namespace Search;
+namespace XuLiangLiang\Search;
 
 require_once 'video/Iqiyi.php';
 require_once 'video/Youku.php';

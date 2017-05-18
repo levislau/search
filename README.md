@@ -4,7 +4,7 @@ this is gather iqiyi youku vqq video urls
 # demo
 include 'vendor/autoload.php';
 
-use Search\Factory;
+use XuLiangLiang\Search\Factory;
 
 //$video_type ['iqiyi','youku','vqq'],只选择其中一个作为参数即可
 
@@ -46,7 +46,7 @@ if($videoUrl === null){
 
 include "vendor/autoload.php"
 
-use Search\Factory
+use XuLiangLiang\Search\Factory
 
 //$keyword 
 
@@ -84,7 +84,7 @@ $rest = $baiduPicObj->getPic($keyword, $attrArr);
 
 include "vendor/autoload.php"
 
-use Search\Factory
+use XuLiangLiang\Search\Factory
 
 $pfactory = new Factory('sansixpic')
 

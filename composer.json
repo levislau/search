@@ -10,7 +10,7 @@
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Search\\":"src"
+            "XuLiangLiang\\Search\\":"src"
         }
     }
 }
