@@ -41,17 +41,19 @@ class Baidupic
 
         $this->init();
 
-        foreach ($attr as $key => $value) {
-            $key = strtolower(trim($key));
+        if($attr !== null) {
+            foreach ($attr as $key => $value) {
+                $key = strtolower(trim($key));
 
-            if ($key === 'size') {
-                $keyCon = 'z';
-            } elseif ($key === 'mold') {
-                $keyCon = '';
-            } elseif ($key === 'color') {
-                $keyCon = 'ic';
+                if ($key === 'size') {
+                    $keyCon = 'z';
+                } elseif ($key === 'mold') {
+                    $keyCon = '';
+                } elseif ($key === 'color') {
+                    $keyCon = 'ic';
+                }
+                $this->$key = '&' . $keyCon . '=' . $value;
             }
-            $this->$key = '&' . $keyCon . '=' . $value;
         }
 
         $keyword = urlencode($keyword);

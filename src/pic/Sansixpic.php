@@ -40,14 +40,16 @@ class Sansixpic
 
         $this->init();
 
-        foreach ($attr as $key => $value) {
-            $key = strtolower(trim($key));
-            if ($key === 'size') {
-                $keyCon = 'zoom';
-            } elseif ($key === 'mold') {
-                $keyCon = 't';
+        if($attr !== null) {
+            foreach ($attr as $key => $value) {
+                $key = strtolower(trim($key));
+                if ($key === 'size') {
+                    $keyCon = 'zoom';
+                } elseif ($key === 'mold') {
+                    $keyCon = 't';
+                }
+                $this->$key = '&' . $keyCon . '=' . $value;
             }
-            $this->$key = '&' . $keyCon . '=' . $value;
         }
 
         $keyword = urlencode($keyword);

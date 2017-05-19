@@ -72,6 +72,8 @@ $pfactory = new Factory('baidupic');
 
 $baidupicObj = $pfactory->factoryObj;
 
+//$attrArr可以不传,默认为null
+
 $rest = $baiduPicObj->getPic($keyword, $attrArr);
 
 
