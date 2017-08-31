@@ -19,10 +19,9 @@ class Factory
 
     public $factoryObj;
 
-    public function __construct($videoName)
+    public function getSelfObj($name)
     {
-        $videoName = ucfirst($videoName);
-
-        $this->factoryObj = new $videoName();
+        $objName = ucfirst($name);
+        $this->factoryObj = new $objName;
     }
 }

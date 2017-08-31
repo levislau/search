@@ -8,7 +8,9 @@ use XuLiangLiang\Search\Factory;
 
 //$video_type ['iqiyi','youku','vqq'],只选择其中一个作为参数即可
 
-$vfactory = new Factory($video_type);
+$vfactory = new Factory();
+
+$vfactory->getSelfObj($video_type);
 
 $videoObj = $vfactory->factoryObj;
 
@@ -68,7 +70,9 @@ $attrArr = array(
     'color' => $color
 );
 
-$pfactory = new Factory('baidupic');
+$factory = new Factory();
+
+$factory->getSelfObj('baidupic');
 
 $baidupicObj = $pfactory->factoryObj;
 
@@ -93,6 +97,25 @@ $pfactory = new Factory('sansixpic')
 $sansixpicObj = $pfactory->factoryObj;
 
 $rest = $sansixpicObj->getpic($key,$attrArr);
+
+
+#图片下载
+$factory = new Factory();
+
+$factory->getSelfObj('picdown');
+
+$picObj = $factory->factoryObj;
+
+//$fileName [本地保存文件名,可以是数组,example:/home/images/xxxx.jpg | array('/home/images/xxx.jpg','/home/images/xxxx.jpg')]
+
+//$imgurl [图片网络路径,可以是数组,example:http://image.baidu.xxx.jpg | array('http://image.baidu.xxxx.jpg','http://image.baidu.xxx.jpg')]
+
+//如果是数组,保存路径与网络地址一一对应
+
+//@return bool
+
+$picObj->imgDown($fileName, $imgurl);
+
 
 
 

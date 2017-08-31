@@ -7,32 +7,22 @@
 class Picdown
 {
 
+    /**
+     * @param $savePath 保存路径
+     * @param $url 可以是数组或者不是数组,如果url为数组，则保存路径也传进来一个数组
+     */
     public function imgDown($savePath,$url)
     {
         $fp = null;
         $ch = null;
-
-        $savePath = rtrim($savePath,'/\\').DIRECTORY_SEPARATOR;
-        if(is_dir($savePath) === false){
-            mkdir($savePath,0777,true);
-        }
 
         if(is_array($url) === true){
             //多线程
             $mch = curl_multi_init();
 
             foreach ($url as $key => $value) {
-                //获得后缀
-                $ext = substr($value,strripos($value,'.',0));
-                if(in_array($ext,array('.jpg','.jpeg','.png','.gif','.bmp')) === false){
-                    continue;
-                }
-
-                $psavePath = $savePath.md5($value.mt_rand(20,10000)).$ext;
-
-                $fp[$key] = fopen($psavePath, 'wb');
+                $fp[$key] = fopen($savePath[$key], 'wb');
                 $ch[$key] = $this->getCurlObject($value, $fp[$key]);
-
                 curl_multi_add_handle($mch, $ch[$key]);
             }
 
@@ -67,18 +57,13 @@ class Picdown
 
         }else{
             //单线程
-            $ext = substr($url,strripos($url,'.',0));
-            if(in_array($ext,array('.jpg','.jpeg','.png','.gif','.bmp')) === false){
-                return;
-            }
-            $psavePath = $savePath.md5($url.mt_rand(20,10000)).$ext;
-
-            $fp = fopen($psavePath,'wb');
+            $fp = fopen($savePath,'wb');
             $ch = $this->getCurlObject($url,$fp);
             curl_exec($ch);
             fclose($fp);
             curl_close($ch);
         }
+        return true;
     }
 
 
@@ -87,6 +72,7 @@ class Picdown
      */
     private function getCurlObject($url, $fp, $postdata = array(), $header = array())
     {
+        $host = parse_url($url,PHP_URL_HOST);
         $option = array();
         $url = trim($url);
         $option[CURLOPT_URL] = $url;
@@ -96,6 +82,7 @@ class Picdown
         $option[CURLOPT_USERAGENT] = 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2763.0 Safari/537.36';
         $option[CURLOPT_NOBODY] = false;
         $option[CURLOPT_FILE] = $fp;
+        $option[CURLOPT_HTTPHEADER] = array('Host:'.$host);
 
 
         if (empty($postdata) === false && is_array($postdata) === true) {
@@ -110,7 +97,8 @@ class Picdown
         }
 
         if (stripos($url, 'https') === 0) {
-            $option[CURLOPT_SSL_VERIFYHOST] = false;
+            $option[CURLOPT_SSL_VERIFYHOST] = 2; //(1|2)
+            $option[CURLOPT_SSL_VERIFYPEER] = 0;
         }
 
         $ch = curl_init();

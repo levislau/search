@@ -43,7 +43,7 @@ class Baidupic
 
         if($attr !== null) {
             foreach ($attr as $key => $value) {
-                $key = strtolower(trim($key));
+                $keyCon = strtolower(trim($key));
 
                 if ($key === 'size') {
                     $keyCon = 'z';
