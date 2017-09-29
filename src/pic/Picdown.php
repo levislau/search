@@ -13,6 +13,7 @@ class Picdown
      */
     public function imgDown($savePath,$url)
     {
+        $rest = array();
         $fp = null;
         $ch = null;
 
@@ -46,12 +47,15 @@ class Picdown
             //释放线程保存文件
             foreach ($ch as $key => $item) {
 //                   $info = curl_multi_getcontent($item);
-//               $info = curl_getinfo($item);
+                $info = curl_getinfo($item);
                 fclose($fp[$key]);
                 curl_multi_remove_handle($mch, $item);
-                //info
                 curl_close($item);
-                //    print_r($info);
+                if($info['http_code'] == '200'){
+                    $rest[] = $savePath[$key];
+                }else{
+                    $rest[] = $savePath['$key'].' download error!!';
+                }
             }
             curl_multi_close($mch);
 
@@ -60,10 +64,16 @@ class Picdown
             $fp = fopen($savePath,'wb');
             $ch = $this->getCurlObject($url,$fp);
             curl_exec($ch);
+            $info = curl_getinfo($ch);
             fclose($fp);
             curl_close($ch);
+            if($info['http_code'] == '200'){
+                $rest[] = $savePath;
+            }else{
+                $rest[] = $savePath.' download error!!';
+            }
         }
-        return true;
+        return $rest;
     }
 
 

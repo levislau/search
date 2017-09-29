@@ -83,7 +83,7 @@ $picObj = $factory->factoryObj;
 //$fileName [本地保存文件名,可以是数组,example:/home/images/xxxx.jpg | array('/home/images/xxx.jpg','/home/images/xxxx.jpg')]
 //$imgurl [图片网络路径,可以是数组,example:http://image.baidu.xxx.jpg | array('http://image.baidu.xxxx.jpg','http://image.baidu.xxx.jpg')]
 //如果是数组,保存路径与网络地址一一对应
-//@return bool
+//@return 下载图片保存的绝对路径数组
 $picObj->imgDown($fileName, $imgurl);
 ```
 
